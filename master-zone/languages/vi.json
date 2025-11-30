@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "title": "Di Huynh | Portfolio & Blog Lập trình",
+    "description": "Portfolio cá nhân và blog chia sẻ kiến thức lập trình. Khám phá các sản phẩm web được xây dựng với công nghệ hiện đại và đọc các bài viết về Frontend, Backend và kinh nghiệm thực tế."
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Về tác giả",
+    "zones": "Hệ sinh thái",
+    "blog": "Bài viết",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "title": "Xây Dựng & Chia Sẻ",
+    "subtitle": "Hành Trình Lập Trình",
+    "description": "Chào mừng bạn đến với không gian cá nhân của tôi. Nơi tôi xây dựng các sản phẩm web với công nghệ hiện đại và chia sẻ những kiến thức, kinh nghiệm lập trình từ thực tế. Khám phá các dự án và bài viết của tôi.",
+    "cta": "Khám phá Sản phẩm",
+    "learnMore": "Tìm hiểu thêm",
+    "viewGitHub": "Source Code"
+  },
+  "techStack": {
+    "title": "Công nghệ cốt lõi",
+    "description": "Vận hành trên nền tảng các công nghệ tiên tiến nhất"
+  },
+  "manifesto": {
+    "vision": "Triết Lý",
+    "title1": "Học hỏi không ngừng từ thực tế.",
+    "title2": "Xây dựng sản phẩm giải quyết vấn đề thực tế.",
+    "title3": "Chia sẻ kiến thức để cùng nhau phát triển.",
+    "title4": "Không ngừng cải tiến và đổi mới.",
+    "points": {
+      "modular": {
+        "title": "01. Học Hỏi",
+        "description": "Luôn cập nhật công nghệ mới, học từ dự án thực tế và không ngừng trau dồi kỹ năng."
+      },
+      "scalable": {
+        "title": "02. Xây Dựng",
+        "description": "Tạo ra các sản phẩm chất lượng với code sạch, kiến trúc tốt và trải nghiệm người dùng tuyệt vời."
+      },
+      "limitless": {
+        "title": "03. Chia Sẻ",
+        "description": "Chia sẻ kiến thức, kinh nghiệm và những bài học từ hành trình lập trình để cộng đồng cùng phát triển."
+      }
+    }
+  },
+  "zones": {
+    "title": "Hai Không Gian Chính",
+    "subtitle": "Khám phá các sản phẩm tôi xây dựng và kiến thức tôi chia sẻ. Hai không gian độc lập nhưng cùng phục vụ mục đích học hỏi và phát triển.",
+    "items": {
+      "master": {
+        "title": "Build Zone",
+        "subtitle": "Sản Phẩm Cá Nhân",
+        "description": "Nơi tôi trưng bày các sản phẩm web được xây dựng với công nghệ hiện đại như Next.js, React, TypeScript, và nhiều hơn nữa. Mỗi dự án là một hành trình học hỏi và thử nghiệm với các công nghệ mới nhất.",
+        "features": {
+          "0": "Sản phẩm Web Thực tế",
+          "1": "Công nghệ Hiện đại",
+          "2": "Code Chất lượng cao"
+        }
+      },
+      "blog": {
+        "title": "Blog Zone",
+        "subtitle": "Chia Sẻ Kiến Thức",
+        "description": "Không gian dành cho việc chia sẻ kiến thức lập trình. Từ các bài viết về Frontend, Backend, đến kinh nghiệm làm việc thực tế và những bài học rút ra từ các dự án. Tất cả được viết với mục đích giúp đỡ cộng đồng developer.",
+        "features": {
+          "0": "Kiến thức Backend",
+          "1": "Kỹ thuật Frontend",
+          "2": "Kinh nghiệm Thực tế"
+        }
+      }
+    },
+    "cta": "Khám phá ngay"
+  },
+  "about": {
+    "title": "Về Tôi",
+    "description": "Hành trình và câu chuyện đằng sau những dòng code",
+    "heading": "Tại sao tôi tạo",
+    "headingHighlight": "Build With Me",
+    "paragraph1": "Tôi là một lập trình viên đam mê xây dựng sản phẩm và chia sẻ kiến thức. Hành trình lập trình của tôi bắt đầu từ sự tò mò về cách các ứng dụng web hoạt động.",
+    "paragraph2": "là không gian cá nhân nơi tôi tổng hợp các sản phẩm đã xây dựng và chia sẻ những kiến thức, kinh nghiệm học được từ thực tế. Đây không chỉ là portfolio mà còn là nơi tôi thử nghiệm các công nghệ mới và chia sẻ hành trình học tập của mình.",
+    "paragraph2Bold": "Build With Me",
+    "paragraph3": "Mục tiêu của tôi là xây dựng các sản phẩm có giá trị và chia sẻ kiến thức để giúp đỡ cộng đồng developer Việt Nam. Mỗi dự án và bài viết đều mang theo những bài học quý giá mà tôi muốn truyền tải.",
+    "cta": "Xem Sản phẩm",
+    "badge": "Mã nguồn Mở"
+  },
+  "footer": {
+    "rights": "Bảo lưu mọi quyền",
+    "madeWith": "Phát triển bằng",
+    "by": "bởi",
+    "description": "Một bản demo hoàn chỉnh cho kiến trúc Next.js Multi-Zones. Xây dựng để mở rộng, thiết kế để chinh phục.",
+    "sections": {
+      "zones": "Hệ sinh thái",
+      "resources": "Tài nguyên",
+      "legal": {
+        "privacy": "Chính sách bảo mật",
+        "terms": "Điều khoản sử dụng"
+      }
+    }
+  },
+  "common": {
+    "readMore": "Đọc tiếp",
+    "getStarted": "Bắt đầu ngay",
+    "viewAll": "Xem tất cả"
+  }
+}

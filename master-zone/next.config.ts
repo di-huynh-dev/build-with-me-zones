@@ -1,15 +1,19 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
         source: "/blog",
-        destination: process.env.NEXT_PUBLIC_BLOG_URL || "http://localhost:4000",
+        destination:
+          process.env.NEXT_PUBLIC_BLOG_URL || "http://localhost:4000",
         permanent: process.env.NODE_ENV === "production",
-      }
+      },
     ];
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

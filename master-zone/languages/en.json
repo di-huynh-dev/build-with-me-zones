@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "title": "Di Huynh | Portfolio & Programming Blog",
+    "description": "Personal portfolio and programming knowledge blog. Explore web products built with modern technologies and read articles about Frontend, Backend and real-world experience."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "zones": "Ecosystem",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Build & Share",
+    "subtitle": "Developer's Journey",
+    "description": "Welcome to my personal space. Where I build web products with modern technologies and share programming knowledge and experience from real-world projects. Explore my projects and articles.",
+    "cta": "Explore Products",
+    "learnMore": "Learn More",
+    "viewGitHub": "View Source"
+  },
+  "techStack": {
+    "title": "Core Technologies",
+    "description": "Powered by the latest cutting-edge stack"
+  },
+  "manifesto": {
+    "vision": "Philosophy",
+    "title1": "Continuous learning from real-world experience.",
+    "title2": "Building products that solve real problems.",
+    "title3": "Sharing knowledge to grow together.",
+    "title4": "Never stop improving and innovating.",
+    "points": {
+      "modular": {
+        "title": "01. Learn",
+        "description": "Always update with new technologies, learn from real projects and continuously improve skills."
+      },
+      "scalable": {
+        "title": "02. Build",
+        "description": "Create quality products with clean code, good architecture and excellent user experience."
+      },
+      "limitless": {
+        "title": "03. Share",
+        "description": "Share knowledge, experience and lessons learned from the programming journey to help the community grow."
+      }
+    }
+  },
+  "zones": {
+    "title": "Two Main Spaces",
+    "subtitle": "Explore the products I build and the knowledge I share. Two independent spaces serving the purpose of learning and development.",
+    "items": {
+      "master": {
+        "title": "Build Zone",
+        "subtitle": "Personal Products",
+        "description": "Where I showcase web products built with modern technologies like Next.js, React, TypeScript, and more. Each project is a learning journey and experimentation with the latest technologies.",
+        "features": {
+          "0": "Real Web Products",
+          "1": "Modern Technologies",
+          "2": "High-Quality Code"
+        }
+      },
+      "blog": {
+        "title": "Blog Zone",
+        "subtitle": "Knowledge Sharing",
+        "description": "A space dedicated to sharing programming knowledge. From articles about Frontend, Backend, to real-world work experience and lessons learned from projects. All written to help the developer community.",
+        "features": {
+          "0": "Backend Knowledge",
+          "1": "Frontend Techniques",
+          "2": "Real Experience"
+        }
+      }
+    },
+    "cta": "Explore Now"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "The journey and story behind the code",
+    "heading": "Why I created",
+    "headingHighlight": "Build With Me",
+    "paragraph1": "I'm a developer passionate about building products and sharing knowledge. My programming journey started from curiosity about how web applications work.",
+    "paragraph2": "is my personal space where I showcase products I've built and share knowledge and experience learned from real-world projects. This is not just a portfolio but also where I experiment with new technologies and share my learning journey.",
+    "paragraph2Bold": "Build With Me",
+    "paragraph3": "My goal is to build valuable products and share knowledge to help the Vietnamese developer community. Each project and article carries valuable lessons I want to convey.",
+    "cta": "View Products",
+    "badge": "Open Source"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "madeWith": "Engineered with",
+    "by": "by",
+    "description": "A comprehensive demo of Next.js Multi-Zone architecture. Built to scale, designed to impress.",
+    "sections": {
+      "zones": "Ecosystem",
+      "resources": "Resources",
+      "legal": {
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
+      }
+    }
+  },
+  "common": {
+    "readMore": "Read More",
+    "getStarted": "Get Started",
+    "viewAll": "View All"
+  }
+}

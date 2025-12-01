@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "home": "Trang Chủ",
+    "blog": "Blog",
+    "about": "Giới Thiệu",
+    "dashboard": "Bảng Điều Khiển",
+    "signIn": "Đăng Nhập",
+    "signOut": "Đăng Xuất"
+  },
+  "home": {
+    "badge": "Hub Kiến Thức Cho Developers",
+    "title": "Kiến Thức Dev,",
+    "titleHighlight": "Phát Triển Kỹ Năng",
+    "subtitle": "Nền tảng chia sẻ kiến thức cho developers. Khám phá best practices, tutorials, và insights thực tế từ các engineers có kinh nghiệm. Xây dựng tốt hơn, nhanh hơn, thông minh hơn.",
+    "ctaPrimary": "Khám Phá Bài Viết",
+    "ctaSecondary": "Hướng Dẫn",
+    "latestPosts": "Bài Viết Mới Nhất",
+    "latestPostsDesc": "Khám phá tutorials, case studies, và insights từ các experts",
+    "viewAll": "Xem Tất Cả",
+    "noPostsYet": "Chưa có bài viết nào. Hãy là người đầu tiên chia sẻ!",
+    "createFirst": "Tạo Bài Viết Đầu Tiên",
+    "features": {
+      "title": "Những Gì Bạn Sẽ Học",
+      "subtitle": "Các hướng dẫn toàn diện và tutorials về phát triển web hiện đại",
+      "performance": {
+        "title": "Tối Ưu Hóa Performance",
+        "desc": "Các kỹ thuật chứng minh để xây dựng ứng dụng nhanh, có khả năng mở rộng với Next.js, React"
+      },
+      "design": {
+        "title": "Best Practices",
+        "desc": "Các patterns tiêu chuẩn ngành và best practices từ các developers có kinh nghiệm"
+      },
+      "security": {
+        "title": "Ví Dụ Thực Tế",
+        "desc": "Case studies và ví dụ thực tế giải quyết các thách thức phổ biến trong phát triển web"
+      }
+    }
+  },
+  "blog": {
+    "title": "Bài Viết Blog",
+    "subtitle": "Khám phá các bài viết về lập trình, phát triển web và những insights công nghệ",
+    "search": "Tìm kiếm bài viết...",
+    "filter": "Lọc theo danh mục",
+    "allCategories": "Tất Cả Danh Mục",
+    "noResults": "Không tìm thấy bài viết. Hãy thử điều chỉnh tìm kiếm của bạn.",
+    "readMore": "Đọc Thêm",
+    "published": "Đăng Tải",
+    "readingTime": "phút đọc",
+    "views": "lượt xem",
+    "tags": "Thẻ",
+    "category": "Danh Mục",
+    "author": "Tác Giả",
+    "relatedPosts": "Bài Viết Liên Quan"
+  },
+  "post": {
+    "backToBlog": "Quay Lại Blog",
+    "author": "Tác Giả",
+    "publishedAt": "Đăng Tải",
+    "updatedAt": "Cập Nhật",
+    "readingTime": "Thời Gian Đọc",
+    "tableOfContents": "Mục Lục",
+    "share": "Chia Sẻ Bài Viết",
+    "relatedPosts": "Bài Viết Liên Quan",
+    "comments": "Bình Luận",
+    "comment": "Để Lại Bình Luận",
+    "noComments": "Chưa có bình luận nào. Hãy là người đầu tiên!"
+  },
+  "about": {
+    "title": "Giới Thiệu DevBlog",
+    "subtitle": "Nền tảng được xây dựng để chia sẻ kiến thức và truyền cảm hứng cho các nhà phát triển",
+    "story": {
+      "title": "Câu Chuyện Của Tôi",
+      "content": "Chào mừng đến với DevBlog! Nền tảng này được tạo ra để chia sẻ hành trình của tôi như một nhà phát triển, bao gồm những bài học, các thực hành tốt nhất và những insight từ năm phát triển phần mềm. Cho dù bạn là người mới bắt đầu hay một nhà phát triển có kinh nghiệm, tôi hy vọng bạn sẽ tìm thấy nội dung có giá trị tại đây."
+    },
+    "mission": {
+      "title": "Sứ Mệnh Của Chúng Tôi",
+      "content": "Tạo một cộng đồng sôi động nơi các nhà phát triển có thể chia sẻ kiến thức, học hỏi lẫn nhau và phát triển cùng nhau. Chúng tôi tin vào sức mạnh của chia sẻ kiến thức và học tập dựa trên cộng đồng."
+    },
+    "expertise": {
+      "title": "Lĩnh Vực Chuyên Môn",
+      "items": [
+        "Phát Triển Full Stack",
+        "Công Nghệ Frontend (React, Next.js, Vue)",
+        "Phát Triển Backend & API",
+        "Thiết Kế Database",
+        "Web Performance & SEO",
+        "DevOps & Deployment",
+        "Cloud Services",
+        "Phát Triển Mobile"
+      ]
+    },
+    "connect": {
+      "title": "Hãy Kết Nối",
+      "subtitle": "Hãy thoải mái liên hệ để cộng tác hoặc chỉ là một lời chào thân thiện",
+      "contactMe": "Liên Hệ Với Tôi"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 DevBlog. Bản quyền được bảo vệ.",
+    "about": "Giới Thiệu",
+    "privacy": "Chính Sách Bảo Mật",
+    "contact": "Liên Hệ"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About",
+    "dashboard": "Dashboard",
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
+  },
+  "home": {
+    "badge": "Developer Knowledge Hub",
+    "title": "Dev Knowledge,",
+    "titleHighlight": "Inspire Growth",
+    "subtitle": "A knowledge-sharing platform for developers. Explore best practices, tutorials, and real-world insights from experienced engineers. Build better, faster, and smarter.",
+    "ctaPrimary": "Explore Articles",
+    "ctaSecondary": "Guides",
+    "latestPosts": "Latest Articles",
+    "latestPostsDesc": "Discover tutorials, case studies, and expert insights",
+    "viewAll": "View All",
+    "noPostsYet": "No posts yet. Be the first to share!",
+    "createFirst": "Create First Post",
+    "features": {
+      "title": "What You'll Learn",
+      "subtitle": "Comprehensive guides and tutorials covering modern web development",
+      "performance": {
+        "title": "Performance Optimization",
+        "desc": "Learn proven techniques to build fast, scalable applications with Next.js, React, and modern web standards"
+      },
+      "design": {
+        "title": "Best Practices",
+        "desc": "Industry-standard patterns and practices from experienced developers working on production applications"
+      },
+      "security": {
+        "title": "Real-World Examples",
+        "desc": "Case studies and practical examples showing how to solve common challenges in web development"
+      }
+    }
+  },
+  "blog": {
+    "title": "Blog Posts",
+    "subtitle": "Explore articles about programming, web development, and tech insights",
+    "search": "Search posts...",
+    "filter": "Filter by category",
+    "allCategories": "All Categories",
+    "noResults": "No posts found. Try adjusting your search.",
+    "readMore": "Read More",
+    "published": "Published",
+    "readingTime": "min read",
+    "views": "views",
+    "tags": "Tags",
+    "category": "Category",
+    "author": "Author",
+    "relatedPosts": "Related Posts"
+  },
+  "post": {
+    "backToBlog": "Back to Blog",
+    "author": "Author",
+    "publishedAt": "Published",
+    "updatedAt": "Updated",
+    "readingTime": "Reading Time",
+    "tableOfContents": "Table of Contents",
+    "share": "Share This Post",
+    "relatedPosts": "Related Articles",
+    "comments": "Comments",
+    "comment": "Leave a Comment",
+    "noComments": "No comments yet. Be the first!"
+  },
+  "about": {
+    "title": "About DevBlog",
+    "subtitle": "A platform built to share knowledge and inspire developers",
+    "story": {
+      "title": "My Story",
+      "content": "Welcome to DevBlog! This platform was created to share my journey as a developer, including lessons learned, best practices, and insights from years of building software. Whether you're a beginner or an experienced developer, I hope you'll find valuable content here."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "To create a vibrant community where developers can share knowledge, learn from each other, and grow together. We believe in the power of knowledge sharing and community-driven learning."
+    },
+    "expertise": {
+      "title": "Areas of Expertise",
+      "items": [
+        "Full Stack Development",
+        "Frontend Technologies (React, Next.js, Vue)",
+        "Backend & API Development",
+        "Database Design",
+        "Web Performance & SEO",
+        "DevOps & Deployment",
+        "Cloud Services",
+        "Mobile Development"
+      ]
+    },
+    "connect": {
+      "title": "Let's Connect",
+      "subtitle": "Feel free to reach out for collaborations or just a friendly hello",
+      "contactMe": "Contact Me"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 DevBlog. All rights reserved.",
+    "about": "About",
+    "privacy": "Privacy Policy",
+    "contact": "Contact"
+  }
+}

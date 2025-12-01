@@ -18,20 +18,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Di Huynh | Personal Portfolio & Blog",
+  title: "Di Huynh | Personal Build zones & Blog",
   description:
-    "Personal portfolio showcasing web products built with modern technologies and blog sharing programming knowledge. Explore Build Zone and Blog Zone.",
+    "Personal showcasing web products built with modern technologies and blog sharing programming knowledge. Explore Build Zone and Blog Zone.",
   openGraph: {
-    title: "Di Huynh | Portfolio & Blog",
-    description: "Personal portfolio and programming knowledge blog.",
+    title: "Di Huynh | Build zones & Blog",
+    description: "Personal build zones and programming knowledge blog.",
     type: "website",
     locale: "en_US",
-    siteName: "Di Huynh Portfolio",
+    siteName: "Di Huynh Build zones ",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Di Huynh | Portfolio & Blog",
-    description: "Personal portfolio and programming knowledge blog.",
+    title: "Di Huynh | Build zones & Blog",
+    description: "Personal build zones and programming knowledge blog.",
   },
 };
 

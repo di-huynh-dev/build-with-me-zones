@@ -9,6 +9,7 @@ on:
 jobs:
   build-master-zone:
     runs-on: ubuntu-latest
+    environment: Production – master-zones
     defaults:
       run:
         working-directory: ./master-zone
@@ -21,22 +22,18 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Create .env.production
-        env:
-          NEXT_PUBLIC_HOME_URL: ${{ secrets.NEXT_PUBLIC_HOME_URL }}
-          NEXT_PUBLIC_BLOG_URL: ${{ secrets.NEXT_PUBLIC_BLOG_URL }}
-        run: |
-          echo "NEXT_PUBLIC_HOME_URL=${NEXT_PUBLIC_HOME_URL:-https://nextdi.io.vn}" >> .env.production
-          echo "NEXT_PUBLIC_BLOG_URL=${NEXT_PUBLIC_BLOG_URL:-https://blog.nextdi.io.vn}" >> .env.production
-
       - name: Install dependencies
         run: bun install
 
       - name: Build
+        env:
+          NEXT_PUBLIC_HOME_URL: ${{ vars.NEXT_PUBLIC_HOME_URL }} # Dùng vars nếu lưu ở Variables
+          NEXT_PUBLIC_BLOG_URL: ${{ vars.NEXT_PUBLIC_BLOG_URL }}
         run: bun run build
 
   build-blog-zone:
     runs-on: ubuntu-latest
+    environment: Production – blogs-zones
     defaults:
       run:
         working-directory: ./blog-zone
@@ -49,16 +46,15 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Create .env.production
-        env:
-          NEXT_PUBLIC_HOME_URL: ${{ secrets.NEXT_PUBLIC_HOME_URL }}
-          NEXT_PUBLIC_BLOG_URL: ${{ secrets.NEXT_PUBLIC_BLOG_URL }}
-        run: |
-          echo "NEXT_PUBLIC_HOME_URL=${NEXT_PUBLIC_HOME_URL:-https://nextdi.io.vn}" >> .env.production
-          echo "NEXT_PUBLIC_BLOG_URL=${NEXT_PUBLIC_BLOG_URL:-https://blog.nextdi.io.vn}" >> .env.production
-
       - name: Install dependencies
         run: bun install
 
       - name: Build
+        env:
+          NEXT_PUBLIC_HOME_URL: ${{ vars.NEXT_PUBLIC_HOME_URL }}
+          NEXT_PUBLIC_BLOG_URL: ${{ vars.NEXT_PUBLIC_BLOG_URL }}
+
+          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
+
+          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
         run: bun run build

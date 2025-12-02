@@ -14,10 +14,18 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18n } from "@/lib/i18n-context";
 import { useTranslation } from "@/lib/i18n";
 import { fakeBlogPosts } from "@/lib/fake-data";
-import Image from "next/image";
+import { ResourceCard } from "@/components/resource-card";
+import { FeatureCard } from "@/components/feature-card";
+import { BlogPostCard } from "@/components/blog-post-card";
+import { SectionHeader } from "@/components/section-header";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function HomePage() {
   const { language } = useI18n();
@@ -26,52 +34,172 @@ export default function HomePage() {
   const featuresRef = useRef<HTMLDivElement>(null);
   const postsRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   const latestPosts = fakeBlogPosts.slice(0, 6);
 
+  // Learning paths data
+  const learningPaths = [
+    {
+      icon: Code2,
+      iconColor: "bg-blue-500/10",
+      level: language === "vi" ? "Cơ Bản" : "Beginner",
+      levelColor: "text-blue-500",
+      title: "React & Next.js",
+      description:
+        language === "vi"
+          ? "Học React hooks, component patterns, Server Components, và App Router"
+          : "Learn React hooks, component patterns, Server Components, and App Router",
+      href: "/guides/react-nextjs",
+      buttonText: language === "vi" ? "Bắt Đầu" : "Get Started",
+    },
+    {
+      icon: Zap,
+      iconColor: "bg-purple-500/10",
+      level: language === "vi" ? "Trung Bình" : "Intermediate",
+      levelColor: "text-purple-500",
+      title: "Performance & Optimization",
+      description:
+        language === "vi"
+          ? "Web Vitals, code splitting, caching strategies, và performance profiling"
+          : "Web Vitals, code splitting, caching strategies, and performance profiling",
+      href: "/guides/performance",
+      buttonText: language === "vi" ? "Bắt Đầu" : "Get Started",
+    },
+    {
+      icon: Lightbulb,
+      iconColor: "bg-green-500/10",
+      level: language === "vi" ? "Nâng Cao" : "Advanced",
+      levelColor: "text-green-500",
+      title: "Architecture & Patterns",
+      description:
+        language === "vi"
+          ? "Scalable architecture, design patterns, testing strategies, và DevOps"
+          : "Scalable architecture, design patterns, testing strategies, and DevOps",
+      href: "/guides/architecture",
+      buttonText: language === "vi" ? "Bắt Đầu" : "Get Started",
+    },
+  ];
+
+  // Key topics data
+  const keyTopics = [
+    {
+      icon: Zap,
+      title: t("home.features.performance.title"),
+      description: t("home.features.performance.desc"),
+    },
+    {
+      icon: Palette,
+      title: t("home.features.design.title"),
+      description: t("home.features.design.desc"),
+    },
+    {
+      icon: BookOpen,
+      title: language === "vi" ? "Case Studies" : "Case Studies",
+      description:
+        language === "vi"
+          ? "Những dự án thực tế và giải pháp cho các thách thức phổ biến"
+          : "Real-world projects and solutions for common challenges",
+    },
+  ];
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Resources animation
+      // Resources animation with stagger
       if (resourcesRef.current) {
         gsap.fromTo(
-          resourcesRef.current.querySelectorAll(".resource-card"),
-          { opacity: 0, y: 30 },
+          resourcesRef.current.querySelectorAll(".resource-card-wrapper"),
+          {
+            opacity: 0,
+            y: 60,
+            scale: 0.9,
+          },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power2.out",
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: resourcesRef.current,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
           }
         );
       }
 
-      // Features animation
+      // Features animation with rotation
       if (featuresRef.current) {
         gsap.fromTo(
           featuresRef.current.querySelectorAll(".feature-card"),
-          { opacity: 0, y: 30 },
+          {
+            opacity: 0,
+            y: 50,
+            rotateX: -15,
+          },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            stagger: 0.15,
-            ease: "power2.out",
+            rotateX: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.2)",
+            scrollTrigger: {
+              trigger: featuresRef.current,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
           }
         );
       }
 
-      // Posts animation
+      // Posts animation with 3D effect
       if (postsRef.current) {
         gsap.fromTo(
           cardsRef.current.filter((card) => card !== null),
-          { opacity: 0, y: 30 },
+          {
+            opacity: 0,
+            y: 80,
+            rotateY: -20,
+            scale: 0.8,
+          },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            stagger: 0.15,
+            rotateY: 0,
+            scale: 1,
+            duration: 1,
+            stagger: 0.12,
+            ease: "power4.out",
+            scrollTrigger: {
+              trigger: postsRef.current,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      // CTA section animation
+      if (ctaRef.current) {
+        gsap.fromTo(
+          ctaRef.current,
+          {
+            opacity: 0,
+            scale: 0.95,
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 1,
             ease: "power2.out",
+            scrollTrigger: {
+              trigger: ctaRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
           }
         );
       }
@@ -87,183 +215,88 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
 
-        {/* Learning Path / Resources Section - Docusaurus Style */}
+        {/* Learning Path / Resources Section */}
         <section
           ref={resourcesRef}
-          className="py-12 sm:py-16 md:py-24 bg-muted/30"
+          className="py-12 sm:py-16 md:py-24 bg-muted/30 relative overflow-hidden"
         >
+          {/* Decorative background elements */}
+          <div className="absolute inset-0 -z-10 opacity-30">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+          </div>
+
           <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-6xl">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight mb-4">
-                {language === "vi" ? "Lộ Trình Học Tập" : "Learning Paths"}
-              </h2>
-              <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-                {language === "vi"
+            <SectionHeader
+              title={language === "vi" ? "Lộ Trình" : "Learning"}
+              highlight={language === "vi" ? "Học Tập" : "Paths"}
+              description={
+                language === "vi"
                   ? "Các hướng dẫn có cấu trúc từ cơ bản đến nâng cao"
-                  : "Structured learning paths from basics to advanced"}
-              </p>
-            </div>
+                  : "Structured learning paths from basics to advanced"
+              }
+            />
 
             <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {/* Path 1 */}
-              <div className="resource-card group p-6 sm:p-8 rounded-xl bg-background border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                    <Code2 className="w-6 h-6 text-blue-500" />
-                  </div>
-                  <span className="text-xs font-bold text-blue-500 bg-blue-500/10 px-3 py-1 rounded-full">
-                    {language === "vi" ? "Cơ Bản" : "Beginner"}
-                  </span>
+              {learningPaths.map((path, index) => (
+                <div key={index} className="resource-card-wrapper">
+                  <ResourceCard {...path} />
                 </div>
-                <h3 className="text-lg sm:text-xl font-black mb-3">
-                  React & Next.js
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6">
-                  {language === "vi"
-                    ? "Học React hooks, component patterns, Server Components, và App Router"
-                    : "Learn React hooks, component patterns, Server Components, and App Router"}
-                </p>
-                <Link href="/guides/react-nextjs">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="group/btn w-full"
-                  >
-                    {language === "vi" ? "Bắt Đầu" : "Get Started"}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                  </Button>
-                </Link>
-              </div>
-
-              {/* Path 2 */}
-              <div className="resource-card group p-6 sm:p-8 rounded-xl bg-background border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                    <Zap className="w-6 h-6 text-purple-500" />
-                  </div>
-                  <span className="text-xs font-bold text-purple-500 bg-purple-500/10 px-3 py-1 rounded-full">
-                    {language === "vi" ? "Trung Bình" : "Intermediate"}
-                  </span>
-                </div>
-                <h3 className="text-lg sm:text-xl font-black mb-3">
-                  {language === "vi"
-                    ? "Performance & Optimization"
-                    : "Performance & Optimization"}
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6">
-                  {language === "vi"
-                    ? "Web Vitals, code splitting, caching strategies, và performance profiling"
-                    : "Web Vitals, code splitting, caching strategies, and performance profiling"}
-                </p>
-                <Link href="/guides/performance">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="group/btn w-full"
-                  >
-                    {language === "vi" ? "Bắt Đầu" : "Get Started"}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                  </Button>
-                </Link>
-              </div>
-
-              {/* Path 3 */}
-              <div className="resource-card group p-6 sm:p-8 rounded-xl bg-background border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center">
-                    <Lightbulb className="w-6 h-6 text-green-500" />
-                  </div>
-                  <span className="text-xs font-bold text-green-500 bg-green-500/10 px-3 py-1 rounded-full">
-                    {language === "vi" ? "Nâng Cao" : "Advanced"}
-                  </span>
-                </div>
-                <h3 className="text-lg sm:text-xl font-black mb-3">
-                  {language === "vi"
-                    ? "Architecture & Patterns"
-                    : "Architecture & Patterns"}
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6">
-                  {language === "vi"
-                    ? "Scalable architecture, design patterns, testing strategies, và DevOps"
-                    : "Scalable architecture, design patterns, testing strategies, and DevOps"}
-                </p>
-                <Link href="/guides/architecture">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="group/btn w-full"
-                  >
-                    {language === "vi" ? "Bắt Đầu" : "Get Started"}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                  </Button>
-                </Link>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Key Topics Grid */}
-        <section ref={featuresRef} className="py-12 sm:py-16 md:py-24">
+        <section ref={featuresRef} className="py-12 sm:py-16 md:py-24 relative">
+          {/* Decorative grid pattern */}
+          <div className="absolute inset-0 -z-10 opacity-5">
+            <div
+              className="h-full w-full"
+              style={{
+                backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
+                backgroundSize: "50px 50px",
+              }}
+            />
+          </div>
+
           <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-6xl">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight mb-4">
-                {language === "vi" ? "Các Chủ Đề Chính" : "Key Topics"}
-              </h2>
-              <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-                {language === "vi"
+            <SectionHeader
+              title={language === "vi" ? "Các Chủ Đề" : "Key"}
+              highlight={language === "vi" ? "Chính" : "Topics"}
+              description={
+                language === "vi"
                   ? "Tìm hiểu về các công nghệ và patterns phổ biến"
-                  : "Explore common technologies and patterns"}
-              </p>
-            </div>
+                  : "Explore common technologies and patterns"
+              }
+            />
 
             <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-3">
-              <div className="feature-card p-6 sm:p-8 rounded-xl bg-background border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-black mb-3">
-                  {t("home.features.performance.title")}
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  {t("home.features.performance.desc")}
-                </p>
-              </div>
-
-              <div className="feature-card p-6 sm:p-8 rounded-xl bg-background border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                  <Palette className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-black mb-3">
-                  {t("home.features.design.title")}
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  {t("home.features.design.desc")}
-                </p>
-              </div>
-
-              <div className="feature-card p-6 sm:p-8 rounded-xl bg-background border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                  <BookOpen className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-black mb-3">
-                  {language === "vi" ? "Case Studies" : "Case Studies"}
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  {language === "vi"
-                    ? "Những dự án thực tế và giải pháp cho các thách thức phổ biến"
-                    : "Real-world projects and solutions for common challenges"}
-                </p>
-              </div>
+              {keyTopics.map((topic, index) => (
+                <FeatureCard key={index} {...topic} />
+              ))}
             </div>
           </div>
         </section>
 
         {/* Latest Articles */}
-        <section ref={postsRef} className="py-12 sm:py-16 md:py-24 bg-muted/30">
+        <section
+          ref={postsRef}
+          className="py-12 sm:py-16 md:py-24 bg-muted/30 relative overflow-hidden"
+        >
+          {/* Animated gradient background */}
+          <div className="absolute inset-0 -z-10 opacity-20">
+            <div className="absolute top-1/3 left-0 w-96 h-96 bg-linear-to-r from-primary/20 to-red-500/20 rounded-full blur-3xl animate-pulse" />
+            <div
+              className="absolute bottom-1/3 right-0 w-96 h-96 bg-linear-to-l from-primary/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"
+              style={{ animationDelay: "1s" }}
+            />
+          </div>
+
           <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-6xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 sm:mb-12 gap-4">
               <div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight mb-2">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-2">
                   {t("home.latestPosts")}
                 </h2>
                 <p className="text-sm sm:text-base text-muted-foreground">
@@ -273,7 +306,7 @@ export default function HomePage() {
               <Link href="/blog">
                 <Button
                   variant="outline"
-                  className="group hidden sm:inline-flex whitespace-nowrap"
+                  className="group hidden sm:inline-flex whitespace-nowrap hover:bg-primary hover:text-primary-foreground transition-all"
                 >
                   {t("home.viewAll")}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -283,63 +316,21 @@ export default function HomePage() {
 
             <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {latestPosts.map((post, index) => (
-                <Link key={post.id} href={`/blog/${post.slug}`}>
-                  <div
-                    ref={(el) => {
-                      if (el) cardsRef.current[index] = el;
-                    }}
-                    className="group h-full flex flex-col rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all bg-background hover:bg-muted/50"
-                  >
-                    <div className="relative h-48 sm:h-56 overflow-hidden bg-muted">
-                      <Image
-                        src={post.cover_image}
-                        alt={post.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="text-xs font-bold text-white bg-red-500 px-3 py-1 rounded-full">
-                          {post.category}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex-1 p-6 sm:p-6 flex flex-col">
-                      <h3 className="text-base sm:text-lg font-black mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                        {post.title}
-                      </h3>
-
-                      <p className="text-sm text-muted-foreground line-clamp-2 mb-4 flex-1">
-                        {post.excerpt}
-                      </p>
-
-                      <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
-                        <div className="flex gap-4">
-                          <span>
-                            📅{" "}
-                            {new Date(post.publishedAt).toLocaleDateString(
-                              language === "vi" ? "vi-VN" : "en-US"
-                            )}
-                          </span>
-                          <span>⏱️ {post.readingTime} min</span>
-                        </div>
-                      </div>
-
-                      {post.tags && post.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2 pt-4 border-t border-primary/10">
-                          {post.tags.slice(0, 2).map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-xs bg-primary/5 text-primary px-2 py-1 rounded"
-                            >
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </Link>
+                <BlogPostCard
+                  key={post.id}
+                  ref={(el) => {
+                    if (el) cardsRef.current[index] = el;
+                  }}
+                  slug={post.slug}
+                  coverImage={post.cover_image}
+                  category={post.category}
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  publishedAt={post.publishedAt}
+                  readingTime={post.readingTime}
+                  tags={post.tags}
+                  language={language}
+                />
               ))}
             </div>
 
@@ -355,7 +346,10 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden">
+        <section
+          ref={ctaRef}
+          className="py-12 sm:py-16 md:py-24 relative overflow-hidden"
+        >
           <div className="absolute inset-0 -z-10 bg-linear-to-br from-primary/5 via-background to-red-500/5" />
           <div className="absolute inset-0 -z-10 opacity-30">
             <div className="absolute top-1/3 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
@@ -363,9 +357,9 @@ export default function HomePage() {
           </div>
 
           <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-4xl text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight mb-4 sm:mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-4 sm:mb-6">
               {language === "vi" ? "Bắt Đầu Học Tập " : "Start Learning "}
-              <span className="text-red-500">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-red-500 to-primary">
                 {language === "vi" ? "Hôm Nay" : "Today"}
               </span>
             </h2>
@@ -378,7 +372,7 @@ export default function HomePage() {
               <Link href="/blog">
                 <Button
                   size="lg"
-                  className="group text-sm sm:text-base w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white"
+                  className="group text-sm sm:text-base w-full sm:w-auto bg-linear-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg hover:shadow-xl transition-all"
                 >
                   {language === "vi" ? "Khám Phá Bài Viết" : "Explore Articles"}
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
@@ -388,7 +382,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="group text-sm sm:text-base w-full sm:w-auto"
+                  className="group text-sm sm:text-base w-full sm:w-auto hover:bg-primary hover:text-primary-foreground transition-all"
                 >
                   {language === "vi" ? "Xem Hướng Dẫn" : "View Guides"}
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
@@ -419,17 +413,26 @@ export default function HomePage() {
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="/blog" className="hover:text-primary">
+                  <Link
+                    href="/blog"
+                    className="hover:text-primary transition-colors"
+                  >
                     Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="/guides" className="hover:text-primary">
+                  <Link
+                    href="/guides"
+                    className="hover:text-primary transition-colors"
+                  >
                     {language === "vi" ? "Hướng Dẫn" : "Guides"}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/docs" className="hover:text-primary">
+                  <Link
+                    href="/docs"
+                    className="hover:text-primary transition-colors"
+                  >
                     {language === "vi" ? "Tài Liệu" : "Documentation"}
                   </Link>
                 </li>
@@ -441,17 +444,17 @@ export default function HomePage() {
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-primary">
+                  <a href="#" className="hover:text-primary transition-colors">
                     GitHub
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary">
+                  <a href="#" className="hover:text-primary transition-colors">
                     Discord
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary">
+                  <a href="#" className="hover:text-primary transition-colors">
                     Twitter
                   </a>
                 </li>
@@ -463,12 +466,18 @@ export default function HomePage() {
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="/privacy" className="hover:text-primary">
+                  <Link
+                    href="/privacy"
+                    className="hover:text-primary transition-colors"
+                  >
                     {language === "vi" ? "Bảo Mật" : "Privacy"}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="hover:text-primary">
+                  <Link
+                    href="/terms"
+                    className="hover:text-primary transition-colors"
+                  >
                     {language === "vi" ? "Điều Khoản" : "Terms"}
                   </Link>
                 </li>

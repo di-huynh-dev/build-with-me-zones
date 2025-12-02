@@ -123,30 +123,30 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative overflow-hidden py-20 md:py-32 lg:py-40"
+      className="relative overflow-hidden py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40"
     >
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10 bg-linear-to-br from-primary/5 via-background to-blue-500/5" />
 
       {/* Animated background elements */}
       <div ref={bgShapesRef} className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-500/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="container">
+      <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-6xl">
         <div className="mx-auto max-w-4xl text-center">
           <div
             ref={badgeRef}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border bg-background/50 px-4 py-2 text-sm backdrop-blur-sm"
+            className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border bg-background/50 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm backdrop-blur-sm"
           >
-            <Sparkles className="h-4 w-4 text-primary" />
+            <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
             <span>{t("home.badge")}</span>
           </div>
 
           <h1
             ref={titleRef}
-            className="mb-6 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-tight"
+            className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-tight"
           >
             <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
               {displayedText}
@@ -160,7 +160,7 @@ export function Hero() {
 
           <p
             ref={subtitleRef}
-            className="mb-8 text-lg text-muted-foreground sm:text-xl md:text-2xl max-w-2xl mx-auto"
+            className="mb-6 sm:mb-8 text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed"
           >
             {language === "vi"
               ? "Nền tảng chia sẻ kiến thức lập trình, best practices, và kinh nghiệm thực tế từ cộng đồng developers. Học tập từ những bài viết, tutorials, và case studies từ các chuyên gia."
@@ -169,19 +169,23 @@ export function Hero() {
 
           <div
             ref={ctaRef}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
           >
-            <Link href="/blog">
+            <Link href="/blog" className="w-full sm:w-auto">
               <Button
                 size="lg"
-                className="group bg-red-500 hover:bg-red-600 text-white"
+                className="group bg-red-500 hover:bg-red-600 text-white w-full sm:w-auto text-sm sm:text-base"
               >
                 {language === "vi" ? "Khám Phá Bài Viết" : "Explore Articles"}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link href="/guides">
-              <Button size="lg" variant="outline">
+            <Link href="/guides" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto text-sm sm:text-base"
+              >
                 {language === "vi" ? "Hướng Dẫn" : "Guides"}
               </Button>
             </Link>

@@ -1,10 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { Navbar } from "@/components/navbar";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,12 +9,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { SearchIcon, Calendar, Clock, Eye, ArrowRight, X } from "lucide-react";
-import gsap from "gsap";
-import { useI18n } from "@/lib/i18n-context";
+import { Input } from "@/components/ui/input";
+import { categories, searchPosts } from "@/lib/fake-data";
 import { useTranslation } from "@/lib/i18n";
-import { fakeBlogPosts, categories, searchPosts } from "@/lib/fake-data";
-import type { Metadata } from "next";
+import { useI18n } from "@/lib/i18n-context";
+import gsap from "gsap";
+import { ArrowRight, Calendar, Clock, Eye, SearchIcon, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 // Client component for dynamic content
 export default function BlogPage() {

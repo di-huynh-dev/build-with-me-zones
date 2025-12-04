@@ -100,5 +100,63 @@
     "about": "Giới Thiệu",
     "privacy": "Chính Sách Bảo Mật",
     "contact": "Liên Hệ"
+  },
+  "showcase": {
+    "title": "Điểm Nổi Bật",
+    "subtitle": "Của Chúng Tôi",
+    "items": {
+      "creative": {
+        "title": "Sáng Tạo",
+        "desc": "Thiết kế độc đáo và giao diện người dùng hiện đại"
+      },
+      "fast": {
+        "title": "Tốc Độ",
+        "desc": "Hiệu suất vượt trội với thời gian tải nhanh chóng"
+      },
+      "precise": {
+        "title": "Chính Xác",
+        "desc": "Code chất lượng cao và best practices"
+      },
+      "growth": {
+        "title": "Tăng Trưởng",
+        "desc": "Cộng đồng phát triển mạnh mẽ và liên tục"
+      }
+    },
+    "achievements": {
+      "users": "Người Dùng",
+      "articles": "Bài Viết",
+      "projects": "Dự Án",
+      "support": "Hỗ Trợ"
+    }
+  },
+  "interactive": {
+    "title": "Tính Năng",
+    "subtitle": "Tương Tác",
+    "features": {
+      "responsive": {
+        "title": "Giao Diện Responsive",
+        "desc": "Tự động điều chỉnh hoàn hảo trên mọi thiết bị và kích thước màn hình"
+      },
+      "mobile": {
+        "title": "Tối Ưu Mobile",
+        "desc": "Trải nghiệm di động mượt mà với hiệu suất cao"
+      },
+      "design": {
+        "title": "Thiết Kế Hiện Đại",
+        "desc": "Giao diện đẹp mắt với animations và transitions tinh tế"
+      },
+      "components": {
+        "title": "Components Linh Hoạt",
+        "desc": "Thư viện components tái sử dụng và dễ dàng tùy chỉnh"
+      },
+      "performance": {
+        "title": "Hiệu Suất Cao",
+        "desc": "Tối ưu hóa tốc độ tải trang và rendering"
+      },
+      "security": {
+        "title": "Bảo Mật Tuyệt Đối",
+        "desc": "Áp dụng các chuẩn bảo mật cao nhất cho ứng dụng"
+      }
+    }
   }
 }

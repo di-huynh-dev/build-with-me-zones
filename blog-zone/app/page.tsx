@@ -9,8 +9,6 @@ import {
   BookOpen,
   Zap,
   Palette,
-  Code2,
-  Lightbulb,
 } from "lucide-react";
 import Link from "next/link";
 import gsap from "gsap";
@@ -18,10 +16,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18n } from "@/lib/i18n-context";
 import { useTranslation } from "@/lib/i18n";
 import { fakeBlogPosts } from "@/lib/fake-data";
-import { ResourceCard } from "@/components/resource-card";
 import { FeatureCard } from "@/components/feature-card";
 import { BlogPostCard } from "@/components/blog-post-card";
 import { SectionHeader } from "@/components/section-header";
+import { ShowcaseSection } from "@/components/showcase-section";
+import { InteractiveShowcase } from "@/components/interactive-showcase";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -30,56 +29,12 @@ if (typeof window !== "undefined") {
 export default function HomePage() {
   const { language } = useI18n();
   const { t } = useTranslation(language);
-  const resourcesRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
   const postsRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const ctaRef = useRef<HTMLDivElement>(null);
 
   const latestPosts = fakeBlogPosts.slice(0, 6);
-
-  // Learning paths data
-  const learningPaths = [
-    {
-      icon: Code2,
-      iconColor: "bg-blue-500/10",
-      level: language === "vi" ? "Cơ Bản" : "Beginner",
-      levelColor: "text-blue-500",
-      title: "React & Next.js",
-      description:
-        language === "vi"
-          ? "Học React hooks, component patterns, Server Components, và App Router"
-          : "Learn React hooks, component patterns, Server Components, and App Router",
-      href: "/guides/react-nextjs",
-      buttonText: language === "vi" ? "Bắt Đầu" : "Get Started",
-    },
-    {
-      icon: Zap,
-      iconColor: "bg-purple-500/10",
-      level: language === "vi" ? "Trung Bình" : "Intermediate",
-      levelColor: "text-purple-500",
-      title: "Performance & Optimization",
-      description:
-        language === "vi"
-          ? "Web Vitals, code splitting, caching strategies, và performance profiling"
-          : "Web Vitals, code splitting, caching strategies, and performance profiling",
-      href: "/guides/performance",
-      buttonText: language === "vi" ? "Bắt Đầu" : "Get Started",
-    },
-    {
-      icon: Lightbulb,
-      iconColor: "bg-green-500/10",
-      level: language === "vi" ? "Nâng Cao" : "Advanced",
-      levelColor: "text-green-500",
-      title: "Architecture & Patterns",
-      description:
-        language === "vi"
-          ? "Scalable architecture, design patterns, testing strategies, và DevOps"
-          : "Scalable architecture, design patterns, testing strategies, and DevOps",
-      href: "/guides/architecture",
-      buttonText: language === "vi" ? "Bắt Đầu" : "Get Started",
-    },
-  ];
 
   // Key topics data
   const keyTopics = [
@@ -105,31 +60,6 @@ export default function HomePage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Resources animation with stagger
-      if (resourcesRef.current) {
-        gsap.fromTo(
-          resourcesRef.current.querySelectorAll(".resource-card-wrapper"),
-          {
-            opacity: 0,
-            y: 60,
-            scale: 0.9,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: resourcesRef.current,
-              start: "top 70%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      }
-
       // Features animation with rotation
       if (featuresRef.current) {
         gsap.fromTo(
@@ -215,37 +145,11 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
 
-        {/* Learning Path / Resources Section */}
-        <section
-          ref={resourcesRef}
-          className="py-12 sm:py-16 md:py-24 bg-muted/30 relative overflow-hidden"
-        >
-          {/* Decorative background elements */}
-          <div className="absolute inset-0 -z-10 opacity-30">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-          </div>
+        {/* Showcase Section */}
+        <ShowcaseSection t={t} />
 
-          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-6xl">
-            <SectionHeader
-              title={language === "vi" ? "Lộ Trình" : "Learning"}
-              highlight={language === "vi" ? "Học Tập" : "Paths"}
-              description={
-                language === "vi"
-                  ? "Các hướng dẫn có cấu trúc từ cơ bản đến nâng cao"
-                  : "Structured learning paths from basics to advanced"
-              }
-            />
-
-            <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {learningPaths.map((path, index) => (
-                <div key={index} className="resource-card-wrapper">
-                  <ResourceCard {...path} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Interactive Showcase */}
+        <InteractiveShowcase t={t} />
 
         {/* Key Topics Grid */}
         <section ref={featuresRef} className="py-12 sm:py-16 md:py-24 relative">

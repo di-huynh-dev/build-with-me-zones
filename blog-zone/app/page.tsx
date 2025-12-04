@@ -11,6 +11,9 @@ import {
   Palette,
   Code2,
   Lightbulb,
+  Sparkles,
+  TrendingUp,
+  Users,
 } from "lucide-react";
 import Link from "next/link";
 import gsap from "gsap";
@@ -38,46 +41,46 @@ export default function HomePage() {
 
   const latestPosts = fakeBlogPosts.slice(0, 6);
 
-  // Learning paths data
-  const learningPaths = [
+  // Blog Showcases data
+  const blogShowcases = [
     {
-      icon: Code2,
-      iconColor: "bg-blue-500/10",
-      level: language === "vi" ? "Cơ Bản" : "Beginner",
-      levelColor: "text-blue-500",
-      title: "React & Next.js",
+      icon: Sparkles,
+      iconColor: "bg-gradient-to-br from-yellow-500/20 to-orange-500/20",
+      level: language === "vi" ? "✨ Nổi Bật" : "✨ Featured",
+      levelColor: "text-yellow-600 dark:text-yellow-500",
+      title: language === "vi" ? "Bài Viết Chất Lượng" : "Quality Content",
       description:
         language === "vi"
-          ? "Học React hooks, component patterns, Server Components, và App Router"
-          : "Learn React hooks, component patterns, Server Components, and App Router",
-      href: "/guides/react-nextjs",
-      buttonText: language === "vi" ? "Bắt Đầu" : "Get Started",
+          ? "Tutorials chuyên sâu, code examples thực tế, và best practices từ industry experts"
+          : "In-depth tutorials, real-world code examples, and best practices from industry experts",
+      href: "/blog?filter=featured",
+      buttonText: language === "vi" ? "Khám Phá" : "Explore",
     },
     {
-      icon: Zap,
-      iconColor: "bg-purple-500/10",
-      level: language === "vi" ? "Trung Bình" : "Intermediate",
-      levelColor: "text-purple-500",
-      title: "Performance & Optimization",
+      icon: TrendingUp,
+      iconColor: "bg-gradient-to-br from-green-500/20 to-emerald-500/20",
+      level: language === "vi" ? "🔥 Trending" : "🔥 Trending",
+      levelColor: "text-green-600 dark:text-green-500",
+      title: language === "vi" ? "Xu Hướng Mới Nhất" : "Latest Trends",
       description:
         language === "vi"
-          ? "Web Vitals, code splitting, caching strategies, và performance profiling"
-          : "Web Vitals, code splitting, caching strategies, and performance profiling",
-      href: "/guides/performance",
-      buttonText: language === "vi" ? "Bắt Đầu" : "Get Started",
+          ? "Cập nhật các công nghệ mới, framework updates, và những gì hot trong cộng đồng dev"
+          : "Stay updated with new technologies, framework updates, and what's hot in the dev community",
+      href: "/blog?filter=trending",
+      buttonText: language === "vi" ? "Xem Ngay" : "View Now",
     },
     {
-      icon: Lightbulb,
-      iconColor: "bg-green-500/10",
-      level: language === "vi" ? "Nâng Cao" : "Advanced",
-      levelColor: "text-green-500",
-      title: "Architecture & Patterns",
+      icon: Users,
+      iconColor: "bg-gradient-to-br from-blue-500/20 to-purple-500/20",
+      level: language === "vi" ? "👥 Cộng Đồng" : "👥 Community",
+      levelColor: "text-blue-600 dark:text-blue-500",
+      title: language === "vi" ? "Chia Sẻ Kinh Nghiệm" : "Shared Experience",
       description:
         language === "vi"
-          ? "Scalable architecture, design patterns, testing strategies, và DevOps"
-          : "Scalable architecture, design patterns, testing strategies, and DevOps",
-      href: "/guides/architecture",
-      buttonText: language === "vi" ? "Bắt Đầu" : "Get Started",
+          ? "Case studies thực tế, lessons learned, và tips từ các developers trong cộng đồng"
+          : "Real case studies, lessons learned, and tips from developers in the community",
+      href: "/blog?filter=community",
+      buttonText: language === "vi" ? "Tham Gia" : "Join In",
     },
   ];
 
@@ -215,32 +218,39 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
 
-        {/* Learning Path / Resources Section */}
+        {/* Blog Showcases Section */}
         <section
           ref={resourcesRef}
           className="py-12 sm:py-16 md:py-24 bg-muted/30 relative overflow-hidden"
         >
-          {/* Decorative background elements */}
+          {/* Enhanced decorative background elements */}
           <div className="absolute inset-0 -z-10 opacity-30">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-full blur-3xl animate-pulse" />
+            <div
+              className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-full blur-3xl animate-pulse"
+              style={{ animationDelay: "1s" }}
+            />
+            <div
+              className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse"
+              style={{ animationDelay: "2s" }}
+            />
           </div>
 
           <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-6xl">
             <SectionHeader
-              title={language === "vi" ? "Lộ Trình" : "Learning"}
-              highlight={language === "vi" ? "Học Tập" : "Paths"}
+              title={language === "vi" ? "Khám Phá" : "Discover"}
+              highlight={language === "vi" ? "Blog" : "Our Blog"}
               description={
                 language === "vi"
-                  ? "Các hướng dẫn có cấu trúc từ cơ bản đến nâng cao"
-                  : "Structured learning paths from basics to advanced"
+                  ? "Nội dung đa dạng, chất lượng cao từ cộng đồng developers"
+                  : "Diverse, high-quality content from the developer community"
               }
             />
 
             <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {learningPaths.map((path, index) => (
+              {blogShowcases.map((showcase, index) => (
                 <div key={index} className="resource-card-wrapper">
-                  <ResourceCard {...path} />
+                  <ResourceCard {...showcase} />
                 </div>
               ))}
             </div>

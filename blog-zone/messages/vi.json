@@ -67,11 +67,11 @@
     "noComments": "Chưa có bình luận nào. Hãy là người đầu tiên!"
   },
   "about": {
-    "title": "Giới Thiệu DevBlog",
+    "title": "Giới Thiệu Code & Tales",
     "subtitle": "Nền tảng được xây dựng để chia sẻ kiến thức và truyền cảm hứng cho các nhà phát triển",
     "story": {
       "title": "Câu Chuyện Của Tôi",
-      "content": "Chào mừng đến với DevBlog! Nền tảng này được tạo ra để chia sẻ hành trình của tôi như một nhà phát triển, bao gồm những bài học, các thực hành tốt nhất và những insight từ năm phát triển phần mềm. Cho dù bạn là người mới bắt đầu hay một nhà phát triển có kinh nghiệm, tôi hy vọng bạn sẽ tìm thấy nội dung có giá trị tại đây."
+      "content": "Chào mừng đến với Code & Tales! Nền tảng này được tạo ra để chia sẻ hành trình của tôi như một nhà phát triển, bao gồm những bài học, các thực hành tốt nhất và những insight từ năm phát triển phần mềm. Cho dù bạn là người mới bắt đầu hay một nhà phát triển có kinh nghiệm, tôi hy vọng bạn sẽ tìm thấy nội dung có giá trị tại đây."
     },
     "mission": {
       "title": "Sứ Mệnh Của Chúng Tôi",
@@ -97,7 +97,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 DevBlog. Bản quyền được bảo vệ.",
+    "copyright": "© 2025 Code & Tales. Bản quyền được bảo vệ.",
     "about": "Giới Thiệu",
     "privacy": "Chính Sách Bảo Mật",
     "contact": "Liên Hệ"

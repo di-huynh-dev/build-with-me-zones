@@ -15,11 +15,11 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:4000"
   ),
   title: {
-    default: "DevBlog - Modern Blog Platform",
-    template: "%s | DevBlog",
+    default: "Code & Tales - Modern Blog Platform",
+    template: "%s | DeCode & Tales vBlog",
   },
   description:
-    "A modern, SEO-optimized blog platform built with Next.js, Shadcn UI, and GSAP animations. Share your knowledge and stories with the world.",
+    "A modern blog platform built with Next.js, Shadcn UI. Share my knowledge and stories with the world.",
   keywords: [
     "blog",
     "nextjs",
@@ -31,22 +31,22 @@ export const metadata: Metadata = {
     "programming",
     "development",
   ],
-  authors: [{ name: "DevBlog Team" }],
-  creator: "DevBlog",
-  publisher: "DevBlog",
+  authors: [{ name: "Code & Tales Team" }],
+  creator: "Code & Tales",
+  publisher: "Code & Tales",
   openGraph: {
     type: "website",
     locale: "vi_VN",
     url: process.env.NEXT_PUBLIC_SITE_URL,
-    title: "DevBlog - Modern Blog Platform",
+    title: "Code & Tales - Modern Blog Platform",
     description: "A modern, SEO-optimized blog platform for developers",
-    siteName: "DevBlog",
+    siteName: "Code & Tales",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DevBlog - Modern Blog Platform",
+    title: "Code & Tales - Modern Blog Platform",
     description: "A modern, SEO-optimized blog platform for developers",
-    creator: "@devblog",
+    creator: "@Code & Tales",
   },
   robots: {
     index: true,

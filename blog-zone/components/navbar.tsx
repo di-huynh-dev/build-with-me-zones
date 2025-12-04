@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n-context";
 import { useTranslation } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import Image from "next/image";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -36,8 +37,14 @@ export function Navbar() {
       <div className="w-full px-4 sm:px-6 md:px-8 mx-auto flex h-16 items-center justify-between">
         <div className="flex items-center gap-4 sm:gap-8">
           <Link href="/" className="flex items-center space-x-2">
+            <Image
+              src="/favicon.ico"
+              alt="Code & Tales Logo"
+              width={40}
+              height={40}
+            />
             <span className="text-xl sm:text-2xl font-bold gradient-text">
-              DevBlog
+              Code & Tales
             </span>
           </Link>
 

@@ -22,9 +22,14 @@ const DEFAULT_SLUG = "intro" as const;
 
 export async function generateStaticParams() {
   const docs = getAllDocs();
-  return docs.map((doc) => ({
-    slug: [doc.slug],
-  }));
+  return [
+    // Empty slug for /docs root
+    { slug: [] },
+    // Individual doc pages
+    ...docs.map((doc) => ({
+      slug: [doc.slug],
+    })),
+  ];
 }
 
 export async function generateMetadata({
@@ -65,6 +70,8 @@ export async function generateMetadata({
 
 export default async function DocsPage({ params }: DocsPageProps) {
   const resolvedParams = await params;
+  
+  // If no slug provided, use default (intro)
   const slug = resolvedParams.slug?.[0] || DEFAULT_SLUG;
   const doc = getDocBySlug(slug);
 

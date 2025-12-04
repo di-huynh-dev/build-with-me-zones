@@ -67,11 +67,11 @@
     "noComments": "No comments yet. Be the first!"
   },
   "about": {
-    "title": "About DevBlog",
+    "title": "About Code & Tales",
     "subtitle": "A platform built to share knowledge and inspire developers",
     "story": {
       "title": "My Story",
-      "content": "Welcome to DevBlog! This platform was created to share my journey as a developer, including lessons learned, best practices, and insights from years of building software. Whether you're a beginner or an experienced developer, I hope you'll find valuable content here."
+      "content": "Welcome to Code & Tales! This platform was created to share my journey as a developer, including lessons learned, best practices, and insights from years of building software. Whether you're a beginner or an experienced developer, I hope you'll find valuable content here."
     },
     "mission": {
       "title": "Our Mission",
@@ -97,7 +97,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 DevBlog. All rights reserved.",
+    "copyright": "© 2025 Code & Tales. All rights reserved.",
     "about": "About",
     "privacy": "Privacy Policy",
     "contact": "Contact"

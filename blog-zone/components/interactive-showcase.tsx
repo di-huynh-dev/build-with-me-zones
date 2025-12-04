@@ -100,10 +100,10 @@ export function InteractiveShowcase({ t }: InteractiveShowcaseProps) {
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
-                  variant={activeFeature === index ? "default" : "outline"}
+                  variant={activeFeature === index ? "ghost" : "outline"}
                   className={`w-full justify-start text-left h-auto py-4 px-6 transition-all duration-300 ${
                     activeFeature === index
-                      ? `bg-gradient-to-r ${feature.gradient} text-white border-0 shadow-lg`
+                      ? `bg-gradient-to-r ${feature.gradient} text-white border-0 shadow-lg hover:opacity-90`
                       : "hover:border-primary/30"
                   }`}
                   onClick={() => setActiveFeature(index)}

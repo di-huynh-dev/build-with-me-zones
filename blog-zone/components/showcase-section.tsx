@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Sparkles, Zap, Target, TrendingUp, Users, FileText, FolderKanban, HeartHandshake } from "lucide-react";
 import { TiltCard } from "./tilt-card";
+import { cn } from "@/lib/utils";
 
 interface ShowcaseSectionProps {
   t: (key: string) => string;
@@ -122,11 +123,20 @@ export function ShowcaseSection({ t }: ShowcaseSectionProps) {
           {showcaseItems.map((item, index) => (
             <motion.div key={index} variants={itemVariants}>
               <TiltCard className="h-full">
-                <div className={`group h-full p-6 rounded-xl bg-gradient-to-br ${item.gradient} backdrop-blur-sm border border-primary/10 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300`}>
-                  <div className={`w-12 h-12 rounded-lg ${item.iconColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <item.icon className={`w-6 h-6 ${item.textColor}`} />
+                <div className={cn(
+                  "group h-full p-6 rounded-xl backdrop-blur-sm border transition-all duration-300",
+                  "bg-gradient-to-br border-primary/10 hover:border-primary/30",
+                  "hover:shadow-xl hover:shadow-primary/10",
+                  item.gradient
+                )}>
+                  <div className={cn(
+                    "w-12 h-12 rounded-lg flex items-center justify-center mb-4",
+                    "group-hover:scale-110 transition-transform duration-300",
+                    item.iconColor
+                  )}>
+                    <item.icon className={cn("w-6 h-6", item.textColor)} />
                   </div>
-                  <h3 className={`text-lg font-black mb-2 ${item.textColor}`}>
+                  <h3 className={cn("text-lg font-black mb-2", item.textColor)}>
                     {item.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">

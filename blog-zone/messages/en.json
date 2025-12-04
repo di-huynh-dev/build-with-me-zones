@@ -100,5 +100,63 @@
     "about": "About",
     "privacy": "Privacy Policy",
     "contact": "Contact"
+  },
+  "showcase": {
+    "title": "Our",
+    "subtitle": "Showcase",
+    "items": {
+      "creative": {
+        "title": "Creative",
+        "desc": "Unique design and modern user interfaces"
+      },
+      "fast": {
+        "title": "Fast",
+        "desc": "Superior performance with blazing fast load times"
+      },
+      "precise": {
+        "title": "Precise",
+        "desc": "High quality code and best practices"
+      },
+      "growth": {
+        "title": "Growth",
+        "desc": "Strong and continuously growing community"
+      }
+    },
+    "achievements": {
+      "users": "Users",
+      "articles": "Articles",
+      "projects": "Projects",
+      "support": "Support"
+    }
+  },
+  "interactive": {
+    "title": "Interactive",
+    "subtitle": "Features",
+    "features": {
+      "responsive": {
+        "title": "Responsive Interface",
+        "desc": "Perfectly adapts to all devices and screen sizes"
+      },
+      "mobile": {
+        "title": "Mobile Optimized",
+        "desc": "Smooth mobile experience with high performance"
+      },
+      "design": {
+        "title": "Modern Design",
+        "desc": "Beautiful interface with subtle animations and transitions"
+      },
+      "components": {
+        "title": "Flexible Components",
+        "desc": "Library of reusable and easily customizable components"
+      },
+      "performance": {
+        "title": "High Performance",
+        "desc": "Optimized page load and rendering speeds"
+      },
+      "security": {
+        "title": "Absolute Security",
+        "desc": "Implementing the highest security standards for applications"
+      }
+    }
   }
 }

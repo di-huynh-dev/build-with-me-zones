@@ -1,28 +1,24 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { getPostBySlug, getRelatedPosts } from "@/lib/fake-data";
+import { useTranslation } from "@/lib/i18n";
+import { useI18n } from "@/lib/i18n-context";
+import gsap from "gsap";
 import {
+  ArrowLeft,
   Calendar,
   Clock,
   Eye,
-  ArrowLeft,
   Share2,
-  ThumbsUp,
-  MessageCircle,
+  ThumbsUp
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import gsap from "gsap";
-import { useI18n } from "@/lib/i18n-context";
-import { useTranslation } from "@/lib/i18n";
-import { getPostBySlug, getRelatedPosts, fakeBlogPosts } from "@/lib/fake-data";
-import { useState } from "react";
-import type { Metadata } from "next";
 import { useParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export default function BlogPostPage() {
   const params = useParams();

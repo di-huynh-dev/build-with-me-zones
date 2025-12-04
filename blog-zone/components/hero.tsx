@@ -6,29 +6,17 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import gsap from "gsap";
 import { useI18n } from "@/lib/i18n-context";
-import { useTranslation } from "@/lib/i18n";
 
 export function Hero() {
   const { language } = useI18n();
-  const { t } = useTranslation(language);
+  // Removed unused t
   const heroRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const bgShapesRef = useRef<HTMLDivElement>(null);
-  const typewriterRef = useRef<HTMLSpanElement>(null);
   const [displayedText, setDisplayedText] = useState("");
-
-  const typewriterWords =
-    language === "vi"
-      ? ["Kiến Thức Dev", "Best Practices", "Web Performance", "React Patterns"]
-      : [
-          "Dev Knowledge",
-          "Best Practices",
-          "Web Performance",
-          "React Patterns",
-        ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -83,6 +71,11 @@ export function Hero() {
 
   // Typewriter effect
   useEffect(() => {
+    const typewriterWords =
+      language === "vi"
+        ? ["Kinh Nghiệm", "Dự Án", "Bài Học", "Đam Mê"]
+        : ["Experience", "Projects", "Lessons", "Passion"];
+
     let currentWordIndex = 0;
     let currentCharIndex = 0;
     let isDeleting = false;
@@ -141,7 +134,7 @@ export function Hero() {
             className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border bg-background/50 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm backdrop-blur-sm"
           >
             <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-            <span>{t("home.badge")}</span>
+            <span>{language === "vi" ? "Chào mừng đến với Blog của tôi" : "Welcome to my Blog"}</span>
           </div>
 
           <h1
@@ -154,7 +147,7 @@ export function Hero() {
             <span className="text-cyan-400 animate-pulse">|</span>
             <br />
             <span className="text-foreground">
-              {language === "vi" ? "Chia sẻ & Phát triển" : "Share & Grow"}
+              {language === "vi" ? "Hành Trình Dev" : "My Dev Journey"}
             </span>
           </h1>
 
@@ -163,8 +156,8 @@ export function Hero() {
             className="mb-6 sm:mb-8 text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed"
           >
             {language === "vi"
-              ? "Nền tảng chia sẻ kiến thức lập trình, best practices, và kinh nghiệm thực tế từ cộng đồng developers. Học tập từ những bài viết, tutorials, và case studies từ các chuyên gia."
-              : "A knowledge-sharing platform for developers. Explore best practices, tutorials, and real-world insights from experienced engineers. Build better, faster, and smarter."}
+              ? "Nơi tôi chia sẻ những kinh nghiệm thực tế, bài học xương máu và những dự án thú vị trong quá trình làm việc. Hy vọng bạn tìm thấy điều gì đó hữu ích cho hành trình của riêng mình."
+              : "Where I share real-world experiences, hard-learned lessons, and interesting projects from my work. I hope you find something useful for your own journey."}
           </p>
 
           <div

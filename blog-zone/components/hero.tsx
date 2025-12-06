@@ -1,190 +1,160 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
-import Link from "next/link";
-import gsap from "gsap";
 import { useI18n } from "@/lib/i18n-context";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ArrowRight, Terminal } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
 
 export function Hero() {
   const { language } = useI18n();
-  // Removed unused t
-  const heroRef = useRef<HTMLDivElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textContainerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const bgShapesRef = useRef<HTMLDivElement>(null);
-  const [displayedText, setDisplayedText] = useState("");
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGSAP(
+    () => {
       const tl = gsap.timeline();
 
-      // Badge animation
-      tl.fromTo(
-        badgeRef.current,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
-      );
-
-      // Typewriter effect simulation
+      // Initial Entrance
+      // Note: Removed image entrance animation to optimize LCP
       tl.fromTo(
         titleRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.3"
-      );
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "power2.out" }
+      )
+        .fromTo(
+          descRef.current,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          "-=0.6"
+        )
+        .fromTo(
+          buttonsRef.current,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6 },
+          "-=0.4"
+        );
 
-      // Subtitle animation
-      tl.fromTo(
-        subtitleRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-        "-=0.4"
-      );
+      // Scroll Parallax Effect
+      gsap.to(imageRef.current, {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
 
-      // CTA buttons animation
-      tl.fromTo(
-        ctaRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-        "-=0.3"
-      );
-
-      // Background shapes animation
-      if (bgShapesRef.current) {
-        gsap.to(bgShapesRef.current?.querySelectorAll("div"), {
-          y: (i) => (i === 0 ? -20 : 20),
-          duration: 4,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          stagger: 0.2,
-        });
-      }
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Typewriter effect
-  useEffect(() => {
-    const typewriterWords =
-      language === "vi"
-        ? ["Kinh Nghiệm", "Dự Án", "Bài Học", "Đam Mê"]
-        : ["Experience", "Projects", "Lessons", "Passion"];
-
-    let currentWordIndex = 0;
-    let currentCharIndex = 0;
-    let isDeleting = false;
-    let typingTimer: NodeJS.Timeout;
-
-    const typewriterEffect = () => {
-      const currentWord = typewriterWords[currentWordIndex];
-
-      if (!isDeleting && currentCharIndex < currentWord.length) {
-        // Typing forward
-        setDisplayedText(currentWord.slice(0, currentCharIndex + 1));
-        currentCharIndex++;
-        typingTimer = setTimeout(typewriterEffect, 80);
-      } else if (isDeleting && currentCharIndex > 0) {
-        // Deleting backward
-        currentCharIndex--;
-        setDisplayedText(currentWord.slice(0, currentCharIndex));
-        typingTimer = setTimeout(typewriterEffect, 50);
-      } else if (!isDeleting && currentCharIndex === currentWord.length) {
-        // Start deleting after 2 seconds
-        typingTimer = setTimeout(() => {
-          isDeleting = true;
-          typewriterEffect();
-        }, 2000);
-      } else if (isDeleting && currentCharIndex === 0) {
-        // Move to next word
-        isDeleting = false;
-        currentWordIndex = (currentWordIndex + 1) % typewriterWords.length;
-        typewriterEffect();
-      }
-    };
-
-    typewriterEffect();
-
-    return () => clearTimeout(typingTimer);
-  }, [language]);
+      gsap.to(textContainerRef.current, {
+        yPercent: -10,
+        opacity: 0.8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    },
+    { scope: containerRef }
+  );
 
   return (
     <section
-      ref={heroRef}
-      className="relative overflow-hidden py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40"
+      ref={containerRef}
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#FFF5EB] pt-20 md:pt-0"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-linear-to-br from-primary/5 via-background to-blue-500/5" />
-
-      {/* Animated background elements */}
-      <div ref={bgShapesRef} className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="mx-auto max-w-4xl text-center">
-          <div
-            ref={badgeRef}
-            className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border bg-background/50 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm backdrop-blur-sm"
-          >
-            <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-            <span>{language === "vi" ? "Chào mừng đến với Blog của tôi" : "Welcome to my Blog"}</span>
+      <div className="container mx-auto grid h-full max-w-7xl grid-cols-1 gap-12 px-4 md:grid-cols-2 md:items-center md:gap-8 md:px-8">
+        {/* Left Column: Text */}
+        <div
+          ref={textContainerRef}
+          className="flex flex-col items-start pt-10 md:pt-0 z-10"
+        >
+          <div className="mb-6 inline-flex items-center rounded-full border border-black/10 bg-black/5 px-4 py-1.5 text-sm font-medium text-black backdrop-blur-sm">
+            <span className="mr-2 flex h-2 w-2 animate-pulse rounded-full bg-black/70" />
+            {language === "vi"
+              ? "Phiên bản 2.0 đã ra mắt"
+              : "New Version 2.0 Released"}
           </div>
 
           <h1
             ref={titleRef}
-            className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-tight"
+            className="text-5xl font-extrabold tracking-tight text-black sm:text-6xl md:text-7xl lg:text-8xl leading-[1.1] selection:bg-black/10"
           >
-            <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
-              {displayedText}
+            {language === "vi" ? "Kiến Tạo" : "Build"}{" "}
+            <span className="block text-black/70">
+              {language === "vi" ? "Tương Lai" : "The Future"}
             </span>
-            <span className="text-cyan-400 animate-pulse">|</span>
-            <br />
-            <span className="text-foreground">
-              {language === "vi" ? "Hành Trình Dev" : "My Dev Journey"}
-            </span>
+            {language === "vi" ? "Bằng Code" : "With Code"}
           </h1>
 
           <p
-            ref={subtitleRef}
-            className="mb-6 sm:mb-8 text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed"
+            ref={descRef}
+            className="mt-6 max-w-[600px] text-lg font-medium leading-relaxed text-black/60 sm:text-xl md:text-2xl"
           >
             {language === "vi"
-              ? "Nơi tôi chia sẻ những kinh nghiệm thực tế, bài học xương máu và những dự án thú vị trong quá trình làm việc. Hy vọng bạn tìm thấy điều gì đó hữu ích cho hành trình của riêng mình."
-              : "Where I share real-world experiences, hard-learned lessons, and interesting projects from my work. I hope you find something useful for your own journey."}
+              ? "Nền tảng chia sẻ kiến thức, dự án và kinh nghiệm lập trình. Tối ưu hóa quy trình phát triển của bạn với những công cụ hiện đại nhất."
+              : "A platform for sharing knowledge, projects, and coding experiences. Optimize your development workflow with the most modern tools."}
           </p>
 
           <div
-            ref={ctaRef}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
+            ref={buttonsRef}
+            className="mt-10 flex w-full flex-col gap-4 sm:flex-row sm:w-auto"
           >
-            <Link href="/blog" className="w-full sm:w-auto">
+            <Link href="/blog">
               <Button
-                size="lg"
-                className="group bg-red-500 hover:bg-red-600 text-white w-full sm:w-auto text-sm sm:text-base"
+                size="xl"
+                className="group w-full bg-black text-white hover:bg-black/80 sm:w-auto px-8 py-6 text-lg rounded-none"
               >
-                {language === "vi" ? "Khám Phá Bài Viết" : "Explore Articles"}
-                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+                {language === "vi" ? "Đọc Blog Ngay" : "Read Blog Now"}
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link href="/guides" className="w-full sm:w-auto">
+
+            <Link href="/projects">
               <Button
-                size="lg"
                 variant="outline"
-                className="w-full sm:w-auto text-sm sm:text-base"
+                size="xl"
+                className="group w-full border-black/20 bg-transparent text-black hover:bg-black/5 sm:w-auto px-8 py-6 text-lg rounded-none"
               >
-                {language === "vi" ? "Hướng Dẫn" : "Guides"}
+                <Terminal className="mr-2 h-5 w-5 opacity-70" />
+                {language === "vi" ? "Xem Dự Án" : "View Projects"}
               </Button>
             </Link>
           </div>
         </div>
+
+        {/* Right Column: Image */}
+        <div
+          ref={imageRef}
+          className="relative flex h-full w-full items-center justify-center md:h-[80vh]"
+        >
+          <div className="relative h-[400px] w-full md:h-[600px] lg:h-[700px]">
+            <Image
+              src="/images/hero-tractor.png"
+              alt="Productivity Machine"
+              fill
+              priority
+              quality={80}
+              className="object-contain object-center drop-shadow-2xl"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        </div>
       </div>
+
+      {/* Decorative gradient fade at bottom */}
+      <div className="absolute bottom-0 left-0 h-32 w-full bg-linear-to-t from-[#FFF5EB] to-transparent pointer-events-none" />
     </section>
   );
 }

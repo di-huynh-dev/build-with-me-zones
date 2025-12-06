@@ -71,7 +71,7 @@ export function CtaSection() {
           <Link href="/blog">
             <Button
               size="lg"
-              className="group text-sm sm:text-base w-full sm:w-auto bg-linear-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg hover:shadow-xl transition-all"
+              className="group text-sm sm:text-base w-full sm:w-auto bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transition-all"
             >
               {language === "vi" ? "Khám Phá Bài Viết" : "Explore Articles"}
               <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />

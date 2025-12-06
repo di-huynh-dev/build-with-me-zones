@@ -5,6 +5,7 @@ import { Code2, Zap, BookOpen } from "lucide-react";
 import { FeatureCard } from "@/components/feature-card";
 import { SectionHeader } from "@/components/section-header";
 import { useI18n } from "@/lib/i18n-context";
+import { DotPattern } from "@/components/ui/dot-pattern";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -78,14 +79,8 @@ export function FocusSection() {
   return (
     <section ref={featuresRef} className="py-12 sm:py-16 md:py-24 relative">
       {/* Decorative grid pattern */}
-      <div className="absolute inset-0 -z-10 opacity-5">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-            backgroundSize: "50px 50px",
-          }}
-        />
+      <div className="absolute inset-0 -z-10 bg-background">
+        <DotPattern className="fill-primary/5" />
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-6xl">

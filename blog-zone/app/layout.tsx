@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { I18nProvider } from "@/components/i18n-provider";
+import { GSAPProvider } from "@/components/gsap-provider";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin", "vietnamese"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-mono",
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin", "vietnamese"],
 });
 
@@ -69,14 +76,18 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="vi" suppressHydrationWarning>
-        <body className={`${inter.variable} font-sans antialiased`}>
+        <body
+          className={`${inter.variable} ${ibmPlexMono.variable} font-sans antialiased`}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            <I18nProvider defaultLanguage="vi">{children}</I18nProvider>
+            <I18nProvider defaultLanguage="vi">
+              <GSAPProvider>{children}</GSAPProvider>
+            </I18nProvider>
           </ThemeProvider>
         </body>
       </html>
